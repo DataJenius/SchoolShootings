@@ -11,4 +11,9 @@ The corresponding CSV file in the /data/ folder is updated automatically.
 This data currently includes XXX incidents. The most recent incident included in this data occurred on XXXXXXXXXXX in XXXXXXXXXXXXXXX.
 
 ## Additional data
-What about the rest?
+This analysis also includes the following data: 
+
+### Giffords_lawcenter_scorecard_grades_2018_03_04.csv
+Grade based rating of state gun control efforts. Data collected on March 4, 2018 from: 
+
+http://lawcenter.giffords.org/scorecard/
