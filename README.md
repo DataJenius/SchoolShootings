@@ -14,6 +14,18 @@ This data currently includes XXX incidents. The most recent incident included in
 This analysis also includes the following data: 
 
 ### Giffords_lawcenter_scorecard_grades_2018_03_04.csv
-Grade based rating of state gun control efforts. Data collected on March 4, 2018 from: 
+Score of state gun control efforts given as a letter grade. Data collected on March 4, 2018 from: 
 
 http://lawcenter.giffords.org/scorecard/
+
+### Wikipedia_states_by_homicide_rate_2018-03-05.csv
+Homicide rate by state per 100,000 population (2016). Data collected on March 5, 2018 from: 
+
+https://en.wikipedia.org/wiki/List_of_U.S._states_by_homicide_rate
+
+### Wikipedia_states_by_population_2018-03-05.csv
+Total population of each state (2017 estimate). Data collected on March 5, 2018 from: 
+
+https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population
+
+## Our analysis
