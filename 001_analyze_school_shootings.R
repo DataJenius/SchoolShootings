@@ -27,7 +27,7 @@ require(zoo)
 
 ###########################################################################
 # Load our data into a data frame and clean it up
-wiki.df <- read.csv("data/Wikipedia_List_of_school_shootings_in_the_United_States_2018-03-04.csv", na.strings = "NULL")
+wiki.df <- read.csv("data/Wikipedia_List_of_school_shootings_in_the_United_States.csv", na.strings = "NULL")
 wiki.df <- subset(wiki.df, select=-c(description, location, date_string))
 
 # The incident of March 2, 2018 had 2 deaths, 0 injuries
@@ -81,17 +81,17 @@ plot_summarize_data_by_feature <- function(df,selected_feature, label, title, in
     ggplot.data <- ggplot.data[ggplot.data$status=="incidents",]
   }
   ggplot(ggplot.data, aes_string(x=selected_feature, y="count", fill="status")) +
-      geom_bar(stat="identity", position = "dodge") +
-      scale_fill_manual(values=c("#094dba", "#ba0823", "#ba7807")) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-      guides(fill=guide_legend(title="Total")) +
-      xlab(label) +
-      ylab("Total") +
+    geom_bar(stat="identity", position = "dodge") +
+    scale_fill_manual(values=c("#094dba", "#ba0823", "#ba7807")) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+    guides(fill=guide_legend(title="Total")) +
+    xlab(label) +
+    ylab("Total") +
     labs( title = title,
           subtitle = "All school shootings: July 26, 1764 through March 2, 2018" 
     ) +
     theme(plot.title = element_text(hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5))
+          plot.subtitle = element_text(hjust = 0.5))
 }
 
 #####################################################################################
@@ -110,10 +110,10 @@ plot_summarize_data_by_feature_per_incident <- function(df,selected_feature, lab
     theme(plot.title = element_text(hjust = 0.5),
           plot.subtitle = element_text(hjust = 0.5))+
     scale_color_manual(
-        name="Per Incident",
-        values=c("#ba0823", "#ba7807","#ae08ba"),
-        breaks=c("combined.per.incident", "deaths.per.incident", "injuries.per.incident"),
-        labels=c("combined", "deaths", "injuries"))
+      name="Per Incident",
+      values=c("#ba0823", "#ba7807","#ae08ba"),
+      breaks=c("combined.per.incident", "deaths.per.incident", "injuries.per.incident"),
+      labels=c("combined", "deaths", "injuries"))
 }
 
 
