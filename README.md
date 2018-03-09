@@ -33,7 +33,10 @@ Our original analysis can be found on our website here:
 
 https://datajenius.com/articles/school-shootings-in-america-and-the-challenge-of-biased-data
 
-If you encounter any errors with this repo please contact experts@datajenius.com so we can correct the issue immediately.
+If you encounter any errors with this repo please contact experts@datajenius.com so we can correct the issue immediately. All contents of this repo are licensed under the MIT License. We invite you to build upon our work, or contribute to this project directly. 
+
+Any journalists working on the subject of school shootings can contact press@datajenius.com for additional assistance.
+
 
 
 
