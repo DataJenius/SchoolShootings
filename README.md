@@ -29,3 +29,11 @@ Total population of each state (2017 estimate). Data collected on March 5, 2018 
 https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population
 
 ## Our analysis
+Our original analysis can be found on our website here:
+
+https://datajenius.com/articles/school-shootings-in-america-and-the-challenge-of-biased-data
+
+If you encounter any errors with this repo please contact experts@datajenius.com so we can correct the issue immediately.
+
+
+
