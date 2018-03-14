@@ -27,6 +27,7 @@ require(zoo)
 
 ###########################################################################
 # Load our data into a data frame and clean it up
+setwd("/Users/joshwork/Desktop/DataJenius/public/SchoolShootings")
 wiki.df <- read.csv("data/Wikipedia_List_of_school_shootings_in_the_United_States.csv", na.strings = "NULL")
 wiki.df <- subset(wiki.df, select=-c(description, location, date_string))
 
@@ -376,6 +377,8 @@ state.grades$grade.group <- as.factor(state.grades$grade.group)
 
 head(state.grades)
 
+
+
 ###########################################################################
 # Now that we've got all our stats let's look at correlation
 # The date selected above (1980 or 2000) has no effect on this
@@ -418,7 +421,6 @@ state.grades[is.na(state.grades$incidents.per.100k),c("incidents.per.100k")] <- 
 state.grades[state.grades$incidents==0,c("combined.per.100k")] <- 0
 state.grades[is.na(state.grades$combined.per.100k),c("combined.per.100k")] <- state.grades[is.na(state.grades$combined.per.100k),c("combined")]/(state.grades[is.na(state.grades$combined.per.100k),c("population")]/100000)
 state.grades
-
 
 # Incidents v Giffords Gun Score
 ggplot(state.grades, aes(x=grade.score, y=incidents.per.100k))+
@@ -474,3 +476,41 @@ ggplot(state.grades, aes(x=grade.group, y=combined.per.100k))+
 
 
 state.grades[order(state.grades$combined.per.100k, decreasing=TRUE),c("state","combined.per.100k","grade")]
+
+
+
+###########################################################################
+# Break into two groups by quartile?
+
+# look at number of incidents by quartiles
+jojo <- state.grades
+jojo <- within(jojo, incidents.per.100k.quartile <- as.integer(cut(incidents.per.100k, quantile(incidents.per.100k, probs=0:5/5), include.lowest=TRUE)))
+quant.grades <- jojo %>%
+  group_by(incidents.per.100k.quartile) %>%
+  summarize(avg.grade = mean(grade.score))
+ggplot(jojo, aes(x=as.factor(incidents.per.100k.quartile), y=incidents.per.100k))+
+  geom_boxplot() + 
+  ylab("School shooting incidents per 100k population (2017)") +
+  #xlab("Giffords Gun Score (2017)") +
+  labs( title = "School Shootings (Since 2000) by Quantile",
+        subtitle = "All 50 States by Incidents, Grouped by Quantile") +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) + 
+  scale_x_discrete("Average Giffords Gun Score per Quantile", breaks=c(1,2,3,4,5), labels = c('64.7% (D)','75.2% (C)','70.0% (C-)','71.6% (C-)','65.0% (D)'))
+
+
+
+# look at homicide
+jojo <- state.grades
+jojo <- within(jojo, homicide.rate.quartile <- as.integer(cut(homicide.rate, quantile(homicide.rate, probs=0:5/5), include.lowest=TRUE)))
+quant.grades <- jojo %>%
+  group_by(homicide.rate.quartile) %>%
+  summarize(avg.grade = mean(grade.score))
+ggplot(jojo, aes(x=as.factor(homicide.rate.quartile), y=homicide.rate))+
+  geom_boxplot() + 
+  ylab("Homicides per 100k population (2016)") +
+  labs( title = "Homicide Rate (2016) by Quantile",
+        subtitle = "All 50 States by Homicide Rate, Grouped by Quantile") +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) + 
+  scale_x_discrete("Average Giffords Gun Score per Quantile", breaks=c(1,2,3,4,5), labels = c('72.5% (C)','72.7% (C)','70.0% (C-)','65% (D+)','66.3% (D+)'))
