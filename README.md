@@ -8,7 +8,7 @@ https://en.wikipedia.org/wiki/List_of_school_shootings_in_the_United_States
 
 The corresponding CSV file in the /data/ folder is updated automatically.
 
-This data currently includes 476 incidents. The most recent incident included in this data occurred on March 14, 2018 in Birmingham, Alabama.
+This data currently includes 477 incidents. The most recent incident included in this data occurred on March 20, 2018 in Great Mills, Maryland.
 
 ## Additional data
 This analysis also includes the following data:
